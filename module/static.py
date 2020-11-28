@@ -3,7 +3,7 @@
 # @Author       : Chr_
 # @Date         : 2020-05-03 23:20:00
 # @LastEditors  : Chr_
-# @LastEditTime : 2020-11-28 02:02:55
+# @LastEditTime : 2020-11-28 11:23:05
 # @Description  : 静态常量
 '''
 
@@ -45,8 +45,8 @@ class URLs():
 
     Keylol_Get_Game_Info = 'https://steamdb.keylol.com/app/%s/data.js?v=38'
 
-    Github_Releases = 'https://github.com/chr233/steam_wishlist_helper/releases'
-    Github_Releases_API = 'https://api.github.com/repos/chr233/steam_wishlist_helper/releases/latest'
+    Github_Releases = 'https://github.com/chr233/cngal/releases'
+    Github_Releases_API = 'https://api.github.com/repos/chr233/cngal/releases/latest'
 
 
 HEADERS = {

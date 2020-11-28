@@ -1,11 +1,11 @@
 
 # Cngal 基于 Steam Wishlist Helper
 
-不需要导入愿望单,根据Appids获取游戏折扣信息
+基于[SWH][b4],不需要导入愿望单,根据Appids获取游戏折扣信息
+
+games.txt中自带了国G的Appid
 
 需要Python3.8及以上
-
-> [蓝奏云镜像][2] 密码:cg84
 
 ## 使用方法
 
