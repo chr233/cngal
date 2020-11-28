@@ -1,0 +1,32 @@
+[other] # 其他设置
+# 是否在运行结束后显示等待屏幕, 如果是在终端中运行可以禁用
+# true: 显示等待屏幕, false: 不显示等待屏幕,直接退出
+wait_screen = true
+
+[itad] # itad模块设置,用于获取价格信息
+# API Token, 必填
+# 申请地址: https://new.isthereanydeal.com/apps/mine/
+token = ""
+
+# 价格区域
+# 设置值参考: https://blog.chrxw.com/archives/2020/11/08/1411.html
+country = "CN"
+region = "cn"
+# 货币符号
+currency_symbol = '¥'
+
+[net] # 代理设置,只支持http协议(不支持socks5)
+# 如果使用全局模式应该不需要设置
+# 非空值: 启用代理, false: 禁用代理
+proxy = false
+# proxy = 'http://127.0.0.1:1081'
+
+[output] #输出配置
+# markdown格式的输出文件(Typora等软件可以打开)
+markdown = true
+
+# xlsx格式的输出文件(Excel可以打开)
+xlsx = true
+
+# 导出Json,方便二次开发
+json = true

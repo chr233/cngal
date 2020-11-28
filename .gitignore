@@ -1,0 +1,9 @@
+*.pyc
+__pycache__
+config.toml
+output/
+.vscode/
+build/
+release/
+test.py
+filter.toml
