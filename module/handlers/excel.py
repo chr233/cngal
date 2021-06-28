@@ -3,7 +3,7 @@
 # @Author       : Chr_
 # @Date         : 2020-07-06 18:22:37
 # @LastEditors  : Chr_
-# @LastEditTime : 2020-11-28 11:05:39
+# @LastEditTime : 2021-06-27 15:43:04
 # @Description  : 输出Xlsx文件
 '''
 
@@ -44,30 +44,34 @@ def formater(wishdict: dict, index: list, symbol: str, wb: Workbook):
     fmt = wb.add_format({'font_name': '微软雅黑', 'align': 'center'})
 
     ws = wb.add_worksheet(name='Steam Wishlist Helper')
+
     ws.set_column('A:A', 10, fmt)
-    ws.set_column('B:B', 60, fmt)
-    ws.set_column('C:C', 7, fmt)
+    ws.set_column('B:B', 20, fmt)
+    ws.set_column('C:C', 60, fmt)
     ws.set_column('D:D', 8, fmt)
     ws.set_column('E:E', 8, fmt)
-    ws.set_column('F:F', 7, fmt)
+    ws.set_column('F:F', 8, fmt)
     ws.set_column('G:G', 8, fmt)
     ws.set_column('H:H', 8, fmt)
-    ws.set_column('I:I', 15, fmt)
+    ws.set_column('I:I', 8, fmt)
     ws.set_column('J:J', 15, fmt)
-    ws.set_column('K:K', 18, fmt)
-    ws.set_column('L:L', 100, fmt)
+    ws.set_column('K:K', 15, fmt)
+    ws.set_column('L:L', 20, fmt)
+    ws.set_column('M:M', 100, fmt)
+    
     ws.write(0, 0, '商店链接')
-    ws.write(0, 1, '游戏名')
-    ws.write(0, 2, '卡牌')
-    ws.write(0, 3, f'现价({symbol})')
-    ws.write(0, 4, f'原价({symbol})')
-    ws.write(0, 5, '折扣')
-    ws.write(0, 6, f'史低({symbol})')
-    ws.write(0, 7, '史低')
-    ws.write(0, 8, '开发商')
-    ws.write(0, 9, '发行商')
-    ws.write(0, 10, '发售日期')
-    ws.write(0, 11, '游戏简介')
+    ws.write(0, 1, 'Appid')
+    ws.write(0, 2, '游戏名')
+    ws.write(0, 3, '卡牌')
+    ws.write(0, 4, f'现价({symbol})')
+    ws.write(0, 5, f'原价({symbol})')
+    ws.write(0, 6, '折扣')
+    ws.write(0, 7, f'史低({symbol})')
+    ws.write(0, 8, '史低')
+    ws.write(0, 9, '开发商')
+    ws.write(0, 10, '发行商')
+    ws.write(0, 11, '发售日期')
+    ws.write(0, 12, '游戏简介')
     if wishdict:
         for col, (appid, detail) in enumerate(wishdict.items(), 1):
             link = f'https://store.steampowered.com/app/{appid}'
@@ -102,16 +106,17 @@ def formater(wishdict: dict, index: list, symbol: str, wb: Workbook):
                 p_low = '-'
 
             ws.write(col, 0, link)
-            ws.write(col, 1, name)
-            ws.write(col, 2, card)
-            ws.write(col, 3, p_now)
-            ws.write(col, 4, p_old)
-            ws.write(col, 5, discount)
-            ws.write(col, 6, p_low)
-            ws.write(col, 7, shidi)
-            ws.write(col, 8, dev)
-            ws.write(col, 9, pub)
-            ws.write(col, 10, release)
-            ws.write(col, 11, desc)
+            ws.write(col, 1, appid)
+            ws.write(col, 2, name)
+            ws.write(col, 3, card)
+            ws.write(col, 4, p_now)
+            ws.write(col, 5, p_old)
+            ws.write(col, 6, discount)
+            ws.write(col, 7, p_low)
+            ws.write(col, 8, shidi)
+            ws.write(col, 9, dev)
+            ws.write(col, 10, pub)
+            ws.write(col, 11, release)
+            ws.write(col, 12, desc)
     else:
         ws.write(1, 1, '游戏列表空,请检查过滤器设置以及是否将愿望单公开')
