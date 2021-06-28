@@ -3,8 +3,8 @@
 # @Author       : Chr_
 # @Date         : 2020-06-30 05:08:57
 # @LastEditors  : Chr_
-# @LastEditTime : 2021-06-27 15:34:56
-# @Description  : 对接Keylol的API【异步】
+# @LastEditTime : 2020-11-28 02:32:05
+# @Description  : 对接swh的API【异步】
 '''
 
 import asyncio
@@ -12,7 +12,7 @@ from httpx import AsyncClient
 
 from .log import get_logger
 from .static import URLs
-from .aionet import adv_http_get_keylol
+from .aionet import adv_http_get_jsom
 
 
 logger = get_logger('Keylol')
@@ -28,7 +28,7 @@ async def get_games_tags(appids: list) -> dict:
         dict: 游戏信息字典
     '''
     gameinfo = {}
-    cut = 3
+    cut = 10
     if appids:
         subs = [appids[i:i+cut] for i in range(0, len(appids), cut)]
         for i, sub in enumerate(subs, 1):
@@ -41,10 +41,10 @@ async def get_games_tags(appids: list) -> dict:
                 gameinfo.update(task.result())
             if i < len(subs):
                 logger.info(f'当前进度{i}/{len(subs)},暂停10秒')
-                await asyncio.sleep(5)
+                await asyncio.sleep(10)
                 if i % 3 == 0:
                     logger.info('歇一会,暂停20秒')
-                    await asyncio.sleep(5)
+                    await asyncio.sleep(20)
             else:
                 logger.info(f'当前进度{i}/{len(subs)},已完成')
     return (gameinfo)

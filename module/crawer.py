@@ -3,9 +3,10 @@
 # @Author       : Chr_
 # @Date         : 2020-11-02 20:56:28
 # @LastEditors  : Chr_
-# @LastEditTime : 2020-11-28 02:23:02
+# @LastEditTime : 2021-06-27 14:45:50
 # @Description  : 抓取模块
 '''
+import asyncio
 
 from .log import get_logger
 from .aioitad import get_plains, get_lowest_price, get_current_price, get_base_info
@@ -53,13 +54,18 @@ class Crawer(object):
         # 只使用其乐API获取信息
         if True:
             self.logger.info('使用Keylol模块获取游戏信息')
-            additiondict = await get_games_tags(ids)
-            for key in self.appids:
-                try:
-                    wishdict[key] = additiondict[key]
-                except KeyError:
-                    errors += 1
-                    self.logger.debug(f'ID {key}处理失败')
+
+            ids_sets = [ids[i:i+30] for i in range(0, len(ids), 30)]
+
+            for ids_set in ids_sets:
+                additiondict = await get_games_tags(ids_set)
+                for key in self.appids:
+                    try:
+                        wishdict[key] = additiondict[key]
+                    except KeyError:
+                        errors += 1
+                        self.logger.debug(f'ID {key}处理失败')
+                # await asyncio.sleep(60)
         else:
             self.logger.info('使用ITAD模块获取游戏信息')
             token = setting['itad']['token']
